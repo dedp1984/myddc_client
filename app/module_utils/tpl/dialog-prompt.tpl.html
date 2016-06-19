@@ -1,0 +1,24 @@
+<form name="form">
+    <div class="modal-header">
+        <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i>{{title}}</h4>
+    </div>
+    <div class="modal-body">
+        <form name="test">
+            <div flex-container="row">
+                <div flex-item="2">
+
+                </div>
+                <div flex-item="8">
+                    <lx-text-field   lx-label="{{placeholder}}"  lx-allow-clear="true" lx-valid="test.val.$valid" lx-error="test.val.$invalid" >
+                        <input type="text" name="val"  ng-model="vm.result"  required>
+                    </lx-text-field>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <lx-button  ng-click="ok()" lx-color="green">确定</lx-button>
+        <lx-button  ng-click="cancel()" lx-color="grey">关闭</lx-button>
+    </div>
+</form>
+

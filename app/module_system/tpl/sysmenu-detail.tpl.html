@@ -1,0 +1,41 @@
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            修改菜单
+            <span class="pull-right"><i class="glyphicon glyphicon-remove" id="spin" ng-click="back()"></i></span>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>菜单名称:</label>
+                    <input type="text" class="form-control" ng-model="item.menuname"/>
+                </div>
+                <div class="col-sm-6">
+                    <label>菜单图标:</label>
+                    <input type="text" class="form-control" ng-model="item.iconclass"/>
+                </div>
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>路由路径:</label>
+                    <input type="text" class="form-control" ng-model="item.routepath"/>
+                </div>
+                <div class="col-sm-6">
+                    <label>上级菜单:</label>
+                    <input type="text" class="form-control" ng-model="item.parentid"/>
+                </div>
+
+            </div>
+            <div class="line line-dashed b-b line-sm pull-in"></div>
+            <div class="form-group">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-success" ng-click="modify()"><i class="fa fa-save"></i>修改</button>
+                    <button type="button" class="btn btn-danger" ng-click="delete()"><i class="glyphicon glyphicon-floppy-remove"></i>删除</button>
+                    <button type="button" class="btn btn-default" ng-click="back()"><i class="glyphicon glyphicon-remove"></i>取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

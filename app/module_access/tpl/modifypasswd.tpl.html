@@ -1,0 +1,46 @@
+
+<div class="wrapper-md" ng-controller="ModifyPasswdController">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold">修改密码</div>
+        <div class="panel-body">
+          <form class="bs-example form-horizontal" name="form">
+            <div class="form-group">
+              <label class="col-lg-3 control-label">当前密码：</label>
+              <div class="col-lg-5">
+                <input type="password" class="form-control" ng-model="user.oldPasswd" required >
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">新的登陆密码：</label>
+              <div class="col-lg-5">
+                <input name="passwd" type="password" class="form-control" ng-model="user.newPasswd" required valid-passwd=""
+                       uib-popover-template="app/login/tpl/modifypasswdtips.html"
+                       popover-trigger="focus"
+                       popover-placement="bottom">
+              </div>
+              <div class="col-lg-4">
+                <span ng-show="form.passwd.$error.valid">密码必须大于8位，且由大写字母、小写字母、数字组成</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">确认新的登录密码：</label>
+              <div class="col-lg-5">
+                <input type="password" name="confirmPasswd" class="form-control" ng-model="user.confirmPasswd" required confirm-passwd="user.newPasswd">
+              </div>
+              <div class="col-lg-4">
+                <span class="error" ng-show="form.confirmPasswd.$error.valid">两次输入密码不一致</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-3 col-lg-8">
+                <button type="submit"  class="btn btn-sm btn-primary m-r-md" ng-disabled="form.$invalid" ng-click="modifyPasswd()">确认修改</button>
+                <button type="button"  class="btn btn-sm btn-info" ng-click="back()">返回</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

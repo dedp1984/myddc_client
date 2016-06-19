@@ -1,0 +1,87 @@
+<form name="form">
+    <div class="wrapper-md" ng-init="item={}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                新增经销商
+                <span class="pull-right"><i class="glyphicon glyphicon-remove" id="spin" ng-click="back()"></i></span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>经销商编号:</label>
+                        <input type="text" class="form-control" ng-model="item.id" required/>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>经销商名称:</label>
+                        <input type="text" class="form-control" ng-model="item.branchname" required/>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>所属区域:</label>
+                        <input type="text" class="form-control" ng-model="item.areano" required/>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>开户账号:</label>
+                        <input type="text" class="form-control" ng-model="item.openbankno" required/>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-sm pull-in"></div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>户名:</label>
+                        <input type="text" class="form-control" ng-model="item.acctname" required />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>开户行:</label>
+                        <input type="text" class="form-control" ng-model="item.openbankname" required />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>经销商电话:</label>
+                        <input type="text" class="form-control" ng-model="item.branchtel" />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>经销商地址:</label>
+                        <input type="text" class="form-control" ng-model="item.branchaddress"/>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-sm pull-in"></div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>经销商简称:</label>
+                        <input type="text" class="form-control" ng-model="item.branchalias" />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>收货联系人:</label>
+                        <input type="text" class="form-control" ng-model="item.linkmain" />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>收货联系电话:</label>
+                        <input type="text" class="form-control" ng-model="item.linktel" />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>邮编:</label>
+                        <input type="text" class="form-control" ng-model="item.zipcode"/>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-sm pull-in"></div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label>所属客户经理:</label>
+                        <input type="text" class="form-control" ng-model="item.manager"/>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>客户经理电话:</label>
+                        <input type="text" class="form-control" ng-model="item.managertel"/>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-sm pull-in"></div>
+                <div class="form-group">
+                    <div class="pull-right">
+                        <lx-button   lx-size="l" lx-color="green"  ng-disabled="form.$invalid"  ng-click="save()"><i class="mdi mdi-content-save"></i>保存</lx-button>
+                        <lx-button   lx-size="l" lx-color="grey" ng-click="back()"><i class="mdi mdi-keyboard-backspace"></i>返回</lx-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

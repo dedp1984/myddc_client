@@ -1,0 +1,41 @@
+<div class="bg-light lter b-b wrapper-md" ng-init="getBranchTree()">
+    <div class="row">
+        <div class="col-sm-4">
+            <div><h1 class="m-n font-thin h4">机构管理</h1></div>
+        </div>
+        <div class="col-sm-8 pull-right">
+            <button type="submit" class="btn btn-info pull-right m-r-sm" ng-click="add()">
+                <i class="fa  fa-save"></i>增加机构
+            </button>
+            <button type="submit" class="btn btn-info pull-right m-r-sm" ng-click="delete()">
+                <i class="fa  fa-save"></i>删除机构
+            </button>
+        </div>
+    </div>
+</div>
+<div class="wrapper-md" >
+    <form name="app">
+        <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false, step3:false}">
+            <tab heading="机构树" active="steps.step1" select="steps.percent=30">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <tree tree-data="branchTree" can-checked="false" name-field="branchname"></tree>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>上级机构名称:</label>
+                                <input type="text" class="form-control"  ng-model="selBranch.branchname" disabled/>
+                            </div>
+                            <div class="col-sm-12">
+                                <label>机构名称:</label>
+                                <input type="text" class="form-control"  ng-model="newBranch.branchname" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </form>
+
+</div>
