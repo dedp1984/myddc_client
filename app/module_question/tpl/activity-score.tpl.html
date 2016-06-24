@@ -1,0 +1,64 @@
+<div class="panel m+" ng-init="initList()">
+    <div class="panel-header">
+        <div class="panel-header-wrapper">
+            <h2 class="panel-header-title">{{scores.activity.actname}}</h2>
+        </div>
+    </div>
+    <div class="data-table-container">
+        <header class="data-table-header">
+            <div class="data-table-header__label">
+                <span class="fs-title"></span>
+            </div>
+            <div class="data-table-header__actions">
+                <lx-button ng-click="back()" lx-type="flat"><i class="mdi mdi-keyboard-backspace"></i>返回</lx-button>
+            </div>
+        </header>
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>被调查部门</th>
+                <th>录入笔数</th>
+                <th>最高分</th>
+                <th>最低分</th>
+                <th>平均分</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in scores.depts">
+                <td><a href="javascript:" ng-click="exportToExcel(item)">{{item.deptname}}</a></td>
+                <td>{{item.score.cntanswer}}</td>
+                <td>{{item.score.maxscore}}</td>
+                <td>{{item.score.minscore}}</td>
+                <td>{{item.score.avgscore}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="has-divider has-divider--dark"></div>
+        <div class="toolbar">
+            <div class="toolbar__left mr++">
+                <span ng-if="paginationInfo.totalItem==0">
+                    无查询结果
+                </span>
+
+            </div>
+            <span class="toolbar__label fs-title">
+
+            </span>
+            <div class="toolbar__right"  ng-if="paginationInfo.totalItem>0">
+                <div class="mr+++">
+                    <span>
+                    总共{{paginationInfo.totalItem}}条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 每页显示：{{paginationInfo.pageSize}}条
+                    </span>
+                </div>
+                <div >
+                    <uib-pagination boundary-links="true" total-items="paginationInfo.totalItem"
+                                    ng-model="paginationInfo.curPage"
+                                    items-per-page="paginationInfo.pageSize" ng-change="pageChanged()"
+                                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                    last-text="&raquo;">
+                    </uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

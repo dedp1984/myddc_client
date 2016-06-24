@@ -1,0 +1,79 @@
+<div class="panel m++">
+    <div class="panel-header">
+        <div class="panel-header-wrapper">
+            <h2 class="panel-header-title">创建活动</h2>
+        </div>
+    </div>
+    <div class="toolbar">
+        <div class="toolbar__left mr++">
+        </div>
+        <span class="toolbar__label fs-title"></span>
+        <div class="toolbar__right">
+            <lx-button   lx-type="flat" lx-size="l" lx-color="green" ng-click="save()"><i class="mdi mdi-content-save"></i>保存</lx-button>
+            <lx-button   lx-type="flat" lx-size="l" lx-color="grey" ng-click="back()"><i class="mdi mdi-keyboard-backspace"></i>返回</lx-button>
+        </div>
+    </div>
+    <div class="has-divider has-divider--dark"></div>
+
+    <form name="form" class="p+">
+        <div flex-container="row" flex-gutter="16">
+            <div flex-item="8">
+                <lx-text-field   lx-label="活动名称"  lx-allow-clear="true" lx-valid="form.actname.$valid" lx-error="form.actname.$invalid" >
+                    <input type="text" name="actname"  ng-model="activity.actname"  required>
+                </lx-text-field>
+            </div>
+        </div>
+        <div flex-container="column" ng-repeat="actdept in activity.actdepts">
+            <div flex-container="row" flex-column="16" flex-gutter="24" >
+                <div flex-item="5">
+                    <lx-select
+                            name="dept"
+                            ng-model="actdept.deptid"
+                            lx-choices="depts"
+                            lx-allow-clear="true"
+                            lx-label="选择调查部门"
+                            lx-multiple="false"
+                            lx-display-filter="true"
+                            lx-error="form.dept.$invalid"
+                            lx-track-by="id"
+                            required
+                            >
+                        <lx-select-selected required>
+                            {{ $selected.deptname }}
+                        </lx-select-selected>
+
+                        <lx-select-choices>
+                            {{ $choice.deptname }}
+                        </lx-select-choices>
+                    </lx-select>
+                </div>
+                <div flex-item="5">
+                    <lx-select
+                            name="template"
+                            ng-model="actdept.tplid"
+                            lx-choices="tpls"
+                            lx-allow-clear="true"
+                            lx-label="调查所用模板"
+                            lx-multiple="false"
+                            lx-display-filter="true"
+                            lx-error="form.template.$invalid"
+                            lx-track-by="id"
+                            required
+                            >
+                        <lx-select-selected required>
+                            {{ $selected.tplname }}
+                        </lx-select-selected>
+
+                        <lx-select-choices>
+                            {{ $choice.tplname }}
+                        </lx-select-choices>
+                    </lx-select>
+                </div>
+                <div flex-item="2">
+                    <lx-button lx-type="fab" lx-size="s" ng-click="addOne($index)" lx-color="grey" class="mt+++">+</lx-button>
+                    <lx-button lx-type="fab" lx-size="s" ng-click="delOne($index)" lx-color="grey" class="mt+++">-</lx-button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

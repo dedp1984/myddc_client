@@ -1,0 +1,34 @@
+<div class="panel" style="height: 500px;">
+  <div class="toolbar">
+    <div class="toolbar__left mr++">
+    </div>
+    <span class="toolbar__label fs-title">满意度调查管理系统</span>
+    <div class="toolbar__right">
+        <a href="javascript:" ui-sref="question.index">进入满意度调查</a>
+    </div>
+  </div>
+  <div class="has-divider has-divider--dark"></div>
+  <div flex-container="row" flex-column="12">
+    <div flex-item="8">
+    </div>
+    <div flex-item="3">
+        <div flex-container="column" class="panel mt+++ tc-white-1">
+            <div class="m+">
+                <span style="color: rgba(0, 0, 0, 0.56);font-size: 20px"><b><i class="mdi mdi-login"></i>请登陆</b></span>
+            </div>
+            <div class="has-divider has-divider--dark"></div>
+            <form name="form">
+                <div flex-container="column" class="p+++" >
+                    <lx-text-field lx-label="用户名" lx-valid="form.username.$valid" >
+                        <input type="text"  name="username" ng-model="user.id" required>
+                    </lx-text-field>
+                    <lx-text-field lx-label="密码" lx-valid="form.passwd.$valid">
+                        <input type="password" name="passwd" ng-model="user.passwd" required>
+                    </lx-text-field>
+                    <lx-button lx-color="green" lx-size="l" class="mt++" ng-click="login()"  ng-disabled='form.$invalid'>登陆</lx-button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>

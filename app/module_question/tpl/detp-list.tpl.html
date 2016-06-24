@@ -1,0 +1,60 @@
+<div class="panel m+" ng-init="initList()">
+    <div class="panel-header">
+        <div class="panel-header-wrapper">
+            <h2 class="panel-header-title">部门管理</h2>
+        </div>
+    </div>
+    <div class="data-table-container">
+        <header class="data-table-header">
+            <div class="data-table-header__label">
+                <span class="fs-title"></span>
+            </div>
+            <div class="data-table-header__actions">
+                <lx-button  ng-click="addDept()"  lx-type="flat"><i class="mdi mdi-plus"></i>增加</lx-button>
+            </div>
+        </header>
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>部门名称</th>
+                <th>编辑</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{item.deptname}}</td>
+                <td>
+                    <a href="javascript:" ng-click="modifyDept(item)">编辑</a>
+                    <a href="javascript:" ng-click="deleteDept(item)">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="has-divider has-divider--dark"></div>
+        <div class="toolbar" ng-if="false">
+            <div class="toolbar__left mr++">
+                <span ng-if="paginationInfo.totalItem==0">
+                    无查询结果
+                </span>
+            </div>
+            <span class="toolbar__label fs-title">
+
+            </span>
+            <div class="toolbar__right"  ng-if="paginationInfo.totalItem>0">
+                <div class="mr+++">
+                    <span>
+                    总共{{paginationInfo.totalItem}}条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 每页显示：{{paginationInfo.pageSize}}条
+                    </span>
+                </div>
+                <div >
+                    <uib-pagination boundary-links="true" total-items="paginationInfo.totalItem"
+                                    ng-model="paginationInfo.curPage"
+                                    items-per-page="paginationInfo.pageSize" ng-change="pageChanged()"
+                                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                    last-text="&raquo;">
+                    </uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

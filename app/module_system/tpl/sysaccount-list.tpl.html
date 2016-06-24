@@ -1,0 +1,70 @@
+<div class="panel m+">
+    <div class="panel-header">
+        <div class="panel-header-wrapper">
+            <h2 class="panel-header-title">用户管理</h2>
+        </div>
+    </div>
+    <div class="data-table-container">
+        <header class="data-table-header">
+            <div class="data-table-header__label">
+                <span class="fs-title"></span>
+            </div>
+            <div class="data-table-header__actions">
+                <lx-button  ui-sref="app.sysaccounts.add" lx-type="flat"><i class="mdi mdi-plus"></i>增加</lx-button>
+            </div>
+        </header>
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>用户ID</th>
+                <th>姓名</th>
+                <th>所属机构</th>
+                <th>地址</th>
+                <th>联系电话</th>
+                <th>邮箱</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{item.id}}</td>
+                <td><a href="javascript:" ng-click="detail(item.id)">{{item.name}}</a></td>
+                <td>{{item.sysBranch.branchname}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.mobile}}</td>
+                <td>{{item.email}}</td>
+                <td>
+                    <a href="javascript:" ng-click="detail(item.id)">编辑</a>
+                    <a href="javascript:" ng-click="resetPasswd(item.id)">重置密码</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="has-divider has-divider--dark"></div>
+        <div class="toolbar">
+            <div class="toolbar__left mr++">
+                <span ng-if="paginationInfo.totalItem==0">
+                    无查询结果
+                </span>
+            </div>
+            <span class="toolbar__label fs-title">
+
+            </span>
+            <div class="toolbar__right"  ng-if="paginationInfo.totalItem>0">
+                <div class="mr+++">
+                    <span>
+                    总共{{paginationInfo.totalItem}}条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 每页显示：{{paginationInfo.pageSize}}条
+                    </span>
+                </div>
+                <div >
+                    <uib-pagination boundary-links="true" total-items="paginationInfo.totalItem"
+                                    ng-model="paginationInfo.curPage"
+                                    items-per-page="paginationInfo.pageSize" ng-change="pageChanged()"
+                                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                    last-text="&raquo;">
+                    </uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

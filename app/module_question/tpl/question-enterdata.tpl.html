@@ -1,0 +1,59 @@
+<div flex-container="row">
+    <div flex-item="2">
+
+    </div>
+    <div flex-item="8">
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-header-wrapper">
+                    <h2 class="panel-header-title">{{actdept.activity.actname}}</h2>
+                </div>
+            </div>
+
+            <form name="form" class="p+++">
+                <div flex-container="row" flex-gutter="16">
+                    <div flex-item="5">
+                        <lx-text-field   lx-label="被评价部门">
+                            <input type="text" ng-model="actdept.dept.deptname" >
+                        </lx-text-field>
+                    </div>
+                    <div flex-item="2">
+
+                    </div>
+                    <div flex-item="5">
+                        <lx-text-field   lx-label="填写时间"  >
+                            <input type="text" ng-model="sysDate" >
+                        </lx-text-field>
+                    </div>
+                </div>
+                <div flex-container="column" >
+                    <section flex-container="column" ng-repeat="item in actdept.tpl" class="mb+" >
+                        <h4><b>{{item.showseq}}、{{item.content}}</b></h4>
+                        <div class="mt+" ng-if="item.type=='1'">
+                            <lx-radio-group>
+                                <lx-radio-button ng-model="item.result" value="{{d.id}}"  required ng-repeat="d in item.sels" >
+                                    {{d.msg}}
+                                </lx-radio-button>
+                            </lx-radio-group>
+                        </div>
+                        <div class="mt+" ng-if="item.type=='2'">
+                            <lx-text-field>
+                                <input type="text" ng-model="item.result" required>
+                            </lx-text-field>
+                        </div>
+                        <div class="has-divider has-divider--dark"></div>
+                    </section>
+                </div>
+                <div class="toolbar">
+                    <div class="toolbar__left mr++">
+                    </div>
+                    <span class="toolbar__label fs-title"></span>
+                    <div class="toolbar__right">
+                        <lx-button  lx-size="l" lx-color="green" class="mr+" ng-disabled="form.$invalid" ng-click="submit()"><i class="mdi mdi-content-save"></i>提交</lx-button>
+                        <lx-button   lx-size="l" lx-color="grey" ui-sref="access.signin"><i class="mdi mdi-keyboard-backspace"></i>返回</lx-button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

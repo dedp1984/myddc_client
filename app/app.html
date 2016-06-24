@@ -1,0 +1,73 @@
+<div class="home">
+    <header class="header">
+        <div class="header-top" style="background-color: #1199C4">
+            <div class="header-top__wrapper">
+                <div class="header-top__left">
+                    <div class="header-top__logo">
+                        满意度调查
+                    </div>
+                </div>
+                <div class="header-top__right">
+                    <toaster-container>
+                    </toaster-container>
+                    <lx-dropdown lx-position="right" lx-over-toggle="true" lx-width="250">
+                        <lx-dropdown-toggle>
+                            <lx-button lx-type="flat" lx-color="white">
+                                {{account.name}}<i class="mdi mdi-chevron-down"></i>
+                            </lx-button>
+                        </lx-dropdown-toggle>
+                        <lx-dropdown-menu>
+                            <ul>
+                                <li class="dropdown-link">{{account.name}}<i class="mdi mdi-chevron-down"></i></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a class="dropdown-link" ui-sref="access.modifypasswd">修改密码</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a class="dropdown-link" ng-click="signup()">登出系统</a></li>
+                            </ul>
+                        </lx-dropdown-menu>
+                    </lx-dropdown>
+                </div>
+            </div>
+        </div>
+</div>
+</header>
+</div>
+<div class="app">
+    <div class="app__wrapper">
+        <div class="app__sidebar" style="height:1000px">
+            <uib-accordion close-others="false">
+                <uib-accordion-group heading="系统管理" is-open="true">
+                    <ul class="sub-nav">
+                        <li><a class="sub-nav__link" ui-sref="app.sysaccounts.list" ui-sref-active="active"
+                               ng-if="hasPrimission('app.sysaccounts.list')">
+                            用户管理
+                        </a>
+                        </li>
+                        <li><a class="sub-nav__link" ui-sref="app.sysbranchs.list"
+                               ng-if="hasPrimission('app.sysbranchs.list')">机构管理</a></li>
+                        <li><a class="sub-nav__link" ui-sref="app.sysmenu.list"
+                               ng-if="hasPrimission('app.sysmenu.list')">菜单管理</a></li>
+                        <li><a class="sub-nav__link" ui-sref="app.sysrole.list"
+                               ng-if="hasPrimission('app.sysrole.list')">角色管理</a></li>
+                    </ul>
+                </uib-accordion-group>
+                <uib-accordion-group heading="问卷调查" is-open="true">
+                    <ul class="sub-nav">
+                        <li><a class="sub-nav__link" ui-sref="app.question.dept" ng-if="hasPrimission('app.question.dept')">调查部门管理</a></li>
+                        <li><a class="sub-nav__link" ui-sref="app.question.template.list" ng-if="hasPrimission('app.question.template.list')">调查模板管理</a></li>
+                        <li><a class="sub-nav__link" ui-sref="app.question.activity.list" ng-if="hasPrimission('app.question.activity.list')">调查活动管理</a></li>
+                    </ul>
+                </uib-accordion-group>
+            </uib-accordion>
+        </div>
+        <div class="app__main">
+            <div ui-view>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="footer">
+    ccc
+</div>

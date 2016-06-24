@@ -1,0 +1,85 @@
+<div class="panel m++">
+    <div class="panel-header">
+        <div class="panel-header-wrapper">
+            <h2 class="panel-header-title">增加模板</h2>
+        </div>
+    </div>
+    <div class="toolbar">
+        <div class="toolbar__left mr++">
+        </div>
+        <span class="toolbar__label fs-title"></span>
+        <div class="toolbar__right">
+            <lx-button   lx-type="flat" lx-size="l" lx-color="green" ng-click="save()"><i class="mdi mdi-content-save"></i>保存</lx-button>
+            <lx-button   lx-type="flat" lx-size="l" lx-color="grey" ng-click="back()"><i class="mdi mdi-keyboard-backspace"></i>返回</lx-button>
+        </div>
+    </div>
+    <div class="has-divider has-divider--dark"></div>
+
+    <form name="template" class="p+">
+        <div flex-container="row" flex-gutter="16">
+            <div flex-item="8">
+                <lx-text-field   lx-label="模板名称"  lx-allow-clear="true" lx-valid="template.tplname.$valid" lx-error="template.tplname.$invalid" >
+                    <input type="text" name="tplname"  ng-model="tpl.tplname"  required>
+                </lx-text-field>
+            </div>
+        </div>
+        <div flex-container="column" ng-repeat="dtl in tpl.tplDtls">
+            <div flex-container="row" flex-column="16" flex-gutter="24" >
+                <div flex-item="12">
+                    <lx-text-field   lx-label="{{dtl.showseq}}、调查问题"  lx-allow-clear="true" lx-valid="template.content.$valid" lx-error="template.content.$invalid" >
+                        <input type="text" name="content"  ng-model="dtl.content" required>
+                    </lx-text-field>
+                </div>
+                <div flex-item="2">
+                    <lx-select
+                            name="type"
+                            ng-model="dtl.type"
+                            lx-choices="seltyps"
+                            lx-allow-clear="true"
+                            lx-label="问题类型"
+                            lx-multiple="false"
+                            lx-display-filter="true"
+                            lx-error="template.type.$invalid"
+                            lx-track-by="id"
+                            required
+                            >
+                        <lx-select-selected required>
+                            {{ $selected.name }}
+                        </lx-select-selected>
+
+                        <lx-select-choices>
+                            {{ $choice.name }}
+                        </lx-select-choices>
+                    </lx-select>
+                </div>
+                <div flex-item="2">
+                    <lx-button lx-type="fab" lx-size="s" ng-click="addOne($index)" lx-color="grey" class="mt+++">+</lx-button>
+                    <lx-button lx-type="fab" lx-size="s" ng-click="delOne($index)" lx-color="grey" class="mt+++">-</lx-button>
+                </div>
+            </div>
+            <div flex-container="row" flex-column="16" flex-gutter="24" ng-if="dtl.type=='1'">
+                <div flex-item="11">
+                    <lx-select
+                            name="choice"
+                            ng-model="dtl.val"
+                            lx-choices="sels"
+                            lx-allow-clear="true"
+                            lx-label="选择问题"
+                            lx-multiple="true"
+                            lx-display-filter="true"
+                            lx-error="template.choice.$invalid"
+                            required
+                            >
+                        <lx-select-selected required>
+                            {{ $selected.id}} - {{ $selected.msg }}
+                        </lx-select-selected>
+
+                        <lx-select-choices>
+                            {{ $choice.id}} - {{ $choice.msg }}
+                        </lx-select-choices>
+                    </lx-select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

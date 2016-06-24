@@ -1,0 +1,17 @@
+<form name="form">
+    <div class="modal-header">
+        <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i>请选择调查活动</h4>
+    </div>
+    <div class="modal-body">
+        <lx-radio-group>
+            <lx-radio-button ng-model="vm.outdata.act" ng-value="act"  required ng-repeat="act in vm.indata" >
+                {{act.actname}}
+            </lx-radio-button>
+        </lx-radio-group>
+    </div>
+    <div class="modal-footer">
+        <lx-button  ng-click="ok()" ng-disabled="form.$invalid" lx-color="green">确定</lx-button>
+        <lx-button  ng-click="cancel()" lx-color="grey">关闭</lx-button>
+    </div>
+</form>
+
