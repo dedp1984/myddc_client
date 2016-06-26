@@ -14,5 +14,6 @@ angular.module('app', [
     'pu.system',
     'pu.access',
     'pu.utils',
-    'pu.question'
+    'pu.question',
+    'pu.workflow'
 ])
