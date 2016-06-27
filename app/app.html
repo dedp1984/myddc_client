@@ -58,6 +58,11 @@
                         <li><a class="sub-nav__link" ui-sref="app.question.activity.list" ng-if="hasPrimission('app.question.activity.list')">调查活动管理</a></li>
                     </ul>
                 </uib-accordion-group>
+                <uib-accordion-group heading="流程管理" is-open="true">
+                    <ul class="sub-nav">
+                        <li><a class="sub-nav__link" ui-sref="app.procdef.list">流程任务管理</a></li>
+                       </ul>
+                </uib-accordion-group>
             </uib-accordion>
         </div>
         <div class="app__main">

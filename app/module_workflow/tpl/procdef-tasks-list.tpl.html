@@ -1,0 +1,133 @@
+<div class="panel m+">
+    <div class="panel-header">
+        <div class="panel-header-wrapper">
+            <h2 class="panel-header-title">流程任务分配</h2>
+        </div>
+    </div>
+    <div class="data-table-container">
+        <header class="data-table-header">
+            <div class="data-table-header__label">
+                <span class="fs-title">{{procdefItem.proc_def_name}}：版本号：{{procdefItem.proc_def_version}}</span>
+            </div>
+            <div class="data-table-header__actions">
+                <lx-button ng-click="add()" lx-type="flat"><i class="mdi mdi-plus"></i>增加</lx-button>
+            </div>
+        </header>
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>任务ID</th>
+                <th>任务名称</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in procdefItem.tasks">
+                <td>{{item.taskId}}</td>
+                <td>{{item.taskName}}</td>
+                <td>
+                    <a href="javascript:" ng-click="taskconfig(item)">设置任务</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="has-divider has-divider--dark"></div>
+        <div class="toolbar"  ng-if="false">
+            <div class="toolbar__left mr++">
+                <span ng-if="paginationInfo.totalItem==0">
+                    无查询结果
+                </span>
+            </div>
+            <span class="toolbar__label fs-title">
+
+            </span>
+            <div class="toolbar__right"  ng-if="paginationInfo.totalItem>0">
+                <div class="mr+++">
+                    <span>
+                    总共{{paginationInfo.totalItem}}条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 每页显示：{{paginationInfo.pageSize}}条
+                    </span>
+                </div>
+                <div >
+                    <uib-pagination boundary-links="true" total-items="paginationInfo.totalItem"
+                                    ng-model="paginationInfo.curPage"
+                                    items-per-page="paginationInfo.pageSize" ng-change="pageChanged()"
+                                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                    last-text="&raquo;">
+                    </uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-header">
+            <div class="panel-header-wrapper">
+                <h2 class="panel-header-title">任务属性</h2>
+            </div>
+        </div>
+        <form flex-container="column">
+            <div flex-container="column">
+                <div>
+                    <lx-radio-group>
+                        <lx-radio-button ng-model="taskItem.assigneeWay" value="1" class="mb0"  >
+                            流程变量
+                        </lx-radio-button>
+                    </lx-radio-group>
+                </div>
+                <div class="pt- ml+++">
+                    <lx-text-field  lx-label="变量名称" >
+                        <input type="text" ng-model="taskItem.assigneeParam">
+                    </lx-text-field>
+                </div>
+            </div>
+            <div flex-container="column">
+                <div>
+                    <lx-radio-group>
+                        <lx-radio-button ng-model="taskItem.assigneeWay" value="2" class="mb0"  >
+                            个人模式
+                        </lx-radio-button>
+                    </lx-radio-group>
+                </div>
+                <div class="pt- ml+++">
+                    <div flex-container="column" ng-repeat="rule in taskItem.rules">
+                        <div flex-container="row">
+                            <div flex-item="1">
+                                <lx-button lx-type="fab" lx-size="s"  lx-color="grey" class="mt+++">rule.seq</lx-button>
+                            </div>
+                            <div flex-item="5">
+                                <lx-select
+                                        name="type"
+                                        ng-model="rule.assigneeUserid"
+                                        lx-choices="accounts"
+                                        lx-allow-clear="true"
+                                        lx-label="任务分配人员"
+                                        lx-multiple="false"
+                                        lx-display-filter="true"
+                                        lx-error="template.type.$invalid"
+                                        lx-track-by="id"
+                                        required
+                                        >
+                                    <lx-select-selected required>
+                                        {{ $selected.name }}
+                                    </lx-select-selected>
+
+                                    <lx-select-choices>
+                                        {{ $choice.name }}
+                                    </lx-select-choices>
+                                </lx-select>
+                            </div>
+                            <div flex-item="2">
+                            </div>
+                            <div flex-item="2">
+                                <lx-button lx-type="fab" lx-size="s" ng-click="addModifyOne($index)" lx-color="grey" class="mt+++">设置规则</lx-button>
+                            </div>
+                            <div flex-item="2">
+                                <lx-button lx-type="fab" lx-size="s" ng-click="addModifyOne($index)" lx-color="grey" class="mt+++">+</lx-button>
+                                <lx-button lx-type="fab" lx-size="s" ng-click="delModifyOne($index)" lx-color="grey" class="mt+++">-</lx-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
