@@ -61,37 +61,48 @@
     <div class="panel">
         <div class="panel-header">
             <div class="panel-header-wrapper">
-                <h2 class="panel-header-title">任务属性</h2>
+                <h2 class="panel-header-title">任务属性:{{curTask.taskName}}</h2>
             </div>
         </div>
+        <div class="toolbar">
+            <div class="toolbar__left mr++">
+            </div>
+            <span class="toolbar__label fs-title"></span>
+            <div class="toolbar__right">
+                <lx-button   lx-type="raised" lx-size="s" lx-color="green" ng-click="save()" class="mr+"><i class="mdi mdi-content-save"></i>保存</lx-button>
+                <lx-button   lx-type="raised" lx-size="s" lx-color="grey" ng-click="back()"><i class="mdi mdi-keyboard-backspace"></i>返回</lx-button>
+            </div>
+        </div>
+        <div class="has-divider has-divider--dark"></div>
         <form flex-container="column">
-            <div flex-container="column">
-                <div>
-                    <lx-radio-group>
-                        <lx-radio-button ng-model="taskItem.assigneeWay" value="1" class="mb0"  >
-                            流程变量
-                        </lx-radio-button>
-                    </lx-radio-group>
+            <lx-radio-group flex-container="row" class="m">
+                <div flex-item="3">
+                    <lx-radio-button ng-model="taskItem.assigneeWay" value="1" class="mb0">
+                        关联流程变量
+                    </lx-radio-button>
                 </div>
-                <div class="pt- ml+++">
+                <div flex-item="3">
+                    <lx-radio-button ng-model="taskItem.assigneeWay" value="2" class="mb0">
+                        单人分配模式
+                    </lx-radio-button>
+                </div>
+                <div flex-item="3">
+                    <lx-radio-button ng-model="taskItem.assigneeWay" value="3" class="mb0">
+                        组分配模式
+                    </lx-radio-button>
+                </div>
+            </lx-radio-group>
+            <div flex-container="column">
+                <div class="ml" ng-if="taskItem.assigneeWay=='1'">
                     <lx-text-field  lx-label="变量名称" >
                         <input type="text" ng-model="taskItem.assigneeParam">
                     </lx-text-field>
                 </div>
-            </div>
-            <div flex-container="column">
-                <div>
-                    <lx-radio-group>
-                        <lx-radio-button ng-model="taskItem.assigneeWay" value="2" class="mb0"  >
-                            个人模式
-                        </lx-radio-button>
-                    </lx-radio-group>
-                </div>
-                <div class="pt- ml+++">
+                <div class="ml" ng-if="taskItem.assigneeWay=='2'">
                     <div flex-container="column" ng-repeat="rule in taskItem.rules">
                         <div flex-container="row">
                             <div flex-item="1">
-                                <lx-button lx-type="fab" lx-size="s"  lx-color="grey" class="mt+++">rule.seq</lx-button>
+                                <lx-button lx-type="icon" lx-size="s"  lx-color="grey" class="mt+++">{{$index+1}}</lx-button>
                             </div>
                             <div flex-item="5">
                                 <lx-select
@@ -115,14 +126,14 @@
                                     </lx-select-choices>
                                 </lx-select>
                             </div>
-                            <div flex-item="2">
+                            <div flex-item="1">
                             </div>
                             <div flex-item="2">
-                                <lx-button lx-type="fab" lx-size="s" ng-click="addModifyOne($index)" lx-color="grey" class="mt+++">设置规则</lx-button>
+                                <lx-button lx-type="flat" lx-size="s" ng-click="setRuleScript(rule)" lx-color="grey" class="mt+++">设置规则</lx-button>
                             </div>
-                            <div flex-item="2">
-                                <lx-button lx-type="fab" lx-size="s" ng-click="addModifyOne($index)" lx-color="grey" class="mt+++">+</lx-button>
-                                <lx-button lx-type="fab" lx-size="s" ng-click="delModifyOne($index)" lx-color="grey" class="mt+++">-</lx-button>
+                            <div flex-item="1">
+                                <lx-button lx-type="fab" lx-size="s" ng-click="addOne($index)" lx-color="grey" class="mt+++">+</lx-button>
+                                <lx-button lx-type="fab" lx-size="s" ng-click="delOne($index)" lx-color="grey" class="mt+++">-</lx-button>
                             </div>
                         </div>
                     </div>

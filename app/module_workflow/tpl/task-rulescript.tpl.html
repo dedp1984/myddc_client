@@ -1,0 +1,21 @@
+<form name="form">
+    <div class="modal-header">
+        <h4 class="modal-title"><i class="fa fa-exclamation-circle"></i>请输入groovy脚本</h4>
+    </div>
+    <div class="modal-body">
+        <form name="test">
+            <div flex-container="row">
+                <div flex-item="8">
+                    <lx-text-field   lx-label="script"  lx-allow-clear="true" lx-valid="test.val.$valid" lx-error="test.val.$invalid" >
+                        <textarea type="text" name="val"  ng-model="vm.indata.ruleScript"  required></textarea>
+                    </lx-text-field>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <lx-button  ng-click="ok()" lx-color="green">确定</lx-button>
+        <lx-button  ng-click="cancel()" lx-color="grey">关闭</lx-button>
+    </div>
+</form>
+
