@@ -24,11 +24,15 @@ angular.module("pu.workflow.controllers")
                     if (angular.isUndefined(response)) {
                         $scope.taskItem = {};
                         $scope.taskItem.assigneeWay = "1";
+                        $scope.taskItem.formkey="";
                         $scope.taskItem.rules = [{seq: 1, assigneeUserid: "", ruleScript: ""}];
                         $scope.taskItem.procDefId=$scope.curProcDefId;
                         $scope.taskItem.taskDefKey=$scope.curTaskId;
                     } else {
                         $scope.taskItem = response;
+                        if($scope.taskItem.rules==null){
+                            $scope.taskItem.rules = [{seq: 1, assigneeUserid: "", ruleScript: ""}];
+                        }
                     }
                 });
         };
@@ -37,7 +41,7 @@ angular.module("pu.workflow.controllers")
         };
         $scope.delOne = function (index) {
             if ($scope.taskItem.rules.length == 1) {
-                $scope.taskItem.rules = [{seq: 1, assigneeUserid: "", ruleScript: ""}];
+                $scope.taskItem.rules = [{seq: 1, formkey:"",assigneeUserid: "", ruleScript: ""}];
             } else {
                 $scope.taskItem.rules.splice(index, 1);
                 //重新计算showseq

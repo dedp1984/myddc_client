@@ -18,6 +18,9 @@
             <tr>
                 <th>任务ID</th>
                 <th>任务名称</th>
+                <th>任务状态</th>
+                <th>创建人</th>
+                <th>创建时间</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -25,8 +28,11 @@
             <tr ng-repeat="item in procdefItem.tasks">
                 <td>{{item.taskId}}</td>
                 <td>{{item.taskName}}</td>
+                <td>{{item.taskStatus}}</td>
+                <td>{{item.createId}}</td>
+                <td>{{item.createTime|mysqlDatetime}}</td>
                 <td>
-                    <a href="javascript:" ng-click="taskconfig(item)">设置任务</a>
+                    <a href="javascript:" ng-click="taskconfig(item)">设置任务参数</a>
                 </td>
             </tr>
             </tbody>
@@ -61,7 +67,7 @@
     <div class="panel">
         <div class="panel-header">
             <div class="panel-header-wrapper">
-                <h2 class="panel-header-title">任务属性:{{curTask.taskName}}</h2>
+                <h4 class="panel-header-title">任务属性:{{curTask.taskName}}</h4>
             </div>
         </div>
         <div class="toolbar">
@@ -74,7 +80,20 @@
             </div>
         </div>
         <div class="has-divider has-divider--dark"></div>
-        <form flex-container="column">
+        <form flex-container="column" name="form">
+            <div flex-container="row" flex-gutter="24" class="ml mb++">
+                <div flex-item="4">
+                    <lx-text-field   lx-label="业务表单"  lx-allow-clear="true" lx-valid="form.formkey.$valid" lx-error="form.formkey.$invalid" >
+                        <input type="text" name="formkey"  ng-model="taskItem.fromkey"  required>
+                    </lx-text-field>
+                </div>
+                <div flex-item="4">
+                    <lx-text-field   lx-label="持续时间"  lx-allow-clear="true" lx-valid="form.duedate.$valid" lx-error="form.duedate.$invalid" >
+                        <input type="text" name="duedate"  ng-model="taskItem.duedate" >
+                    </lx-text-field>
+                </div>
+            </div>
+            <div class="has-divider has-divider--dark"></div>
             <lx-radio-group flex-container="row" class="m">
                 <div flex-item="3">
                     <lx-radio-button ng-model="taskItem.assigneeWay" value="1" class="mb0">
