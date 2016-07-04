@@ -31,14 +31,14 @@
                         <h4><b>{{item.showseq}}、{{item.content}}</b></h4>
                         <div class="mt+" ng-if="item.type=='1'">
                             <lx-radio-group>
-                                <lx-radio-button ng-model="item.result" value="{{d.id}}"  required ng-repeat="d in item.sels" >
+                                <lx-radio-button ng-model="item.result" value="{{d.score}}"  required ng-repeat="d in item.sels" >
                                     {{d.msg}}
                                 </lx-radio-button>
                             </lx-radio-group>
                         </div>
                         <div class="mt+" ng-if="item.type=='2'">
                             <lx-text-field>
-                                <input type="text" ng-model="item.result" required>
+                                <input type="text" ng-model="item.result">
                             </lx-text-field>
                         </div>
                         <div class="has-divider has-divider--dark"></div>
