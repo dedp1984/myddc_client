@@ -16,11 +16,25 @@
     <div class="has-divider has-divider--dark"></div>
 
     <form name="form" class="p+">
-        <div flex-container="row" flex-gutter="16">
-            <div flex-item="8">
+        <div flex-container="row" flex-column="16" flex-gutter="24">
+            <div flex-item="5">
                 <lx-text-field   lx-label="活动名称"  lx-allow-clear="true" lx-valid="form.actname.$valid" lx-error="form.actname.$invalid" >
                     <input type="text" name="actname"  ng-model="activity.actname"  required>
                 </lx-text-field>
+            </div>
+            <div flex-item="5">
+                <lx-radio-group flex-container="row" class="m pt++">
+                    <div flex-item="6">
+                        <lx-radio-button ng-model="activity.acttype" value="默认" class="mb0">
+                            默认
+                        </lx-radio-button>
+                    </div>
+                    <div>
+                        <lx-radio-button ng-model="activity.acttype" value="市场部" class="mb0">
+                            市场部
+                        </lx-radio-button>
+                    </div>
+                </lx-radio-group>
             </div>
         </div>
         <div flex-container="column" ng-repeat="actdept in activity.actdepts">

@@ -25,6 +25,10 @@ angular.module("pu.question.controllers")
 
             });
         };
+        $scope.jxs=[{name:'重庆'},{name:'贵州'},{name:'四川'},{name:'云南'},
+            {name:'广西'},{name:'海南'},{name:'宁夏'},{name:'新疆'},{name:'北京'},
+            {name:'吉林'},{name:'河北'},{name:'山西'},{name:'河南'},{name:'陕西'}];
+        $scope.dept={};
         $scope.selectQuestionTpl=function(item){
             QuestionRestangular.one('/common').one('/systemDate').get().then(function(response){
                $scope.sysDate=response;
@@ -43,6 +47,7 @@ angular.module("pu.question.controllers")
                 obj.tpldtlid=tpl.id;
                 obj.actdeptid=$scope.actdept.id;
                 obj.result=tpl.result;
+                obj.commitid=$scope.dept.name;
                 $scope.questionRslt.push(obj);
             }
             $scope.answer={};

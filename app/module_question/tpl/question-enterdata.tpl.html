@@ -12,16 +12,38 @@
 
             <form name="form" class="p+++">
                 <div flex-container="row" flex-gutter="16">
-                    <div flex-item="5">
-                        <lx-text-field   lx-label="被评价部门">
+                    <div flex-item="4" ng-if="actdept.activity.acttype=='市场部'">
+                        <lx-select
+                                name="dept"
+                                ng-model="dept.name"
+                                lx-choices="jxs"
+                                lx-allow-clear="true"
+                                lx-label="请选择录入经销商"
+                                lx-multiple="false"
+                                lx-display-filter="false"
+                                lx-error="form.dept.$invalid"
+                                lx-track-by="name"
+                                required
+                                >
+                            <lx-select-selected required>
+                                {{ $selected.name }}
+                            </lx-select-selected>
+
+                            <lx-select-choices>
+                                {{ $choice.name }}
+                            </lx-select-choices>
+                        </lx-select>
+                    </div>
+                    <div flex-item="4">
+                        <lx-text-field   lx-label="被评价部门" ng-disabled="true">
                             <input type="text" ng-model="actdept.dept.deptname" >
                         </lx-text-field>
+                        <span ng-if="actdept.activity.acttype=='市场部'">
+                            （即区域经理所代表的市场销售部门）
+                        </span>
                     </div>
-                    <div flex-item="2">
-
-                    </div>
-                    <div flex-item="5">
-                        <lx-text-field   lx-label="填写时间"  >
+                    <div flex-item="4">
+                        <lx-text-field   lx-label="填写时间"  ng-disabled="true">
                             <input type="text" ng-model="sysDate" >
                         </lx-text-field>
                     </div>
